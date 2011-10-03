@@ -10,7 +10,26 @@
 #include "RGBAUtilities.h"
 #include "FileHandler.h"
 
+/* Utility functions not needed on Vanilla Essence C kernel */
 int width, height;
+uint8* readImage(char* fileName){
+    readPngFile(fileName);
+    
+    width = getImageWidth();
+    height = getImageLength();
+    
+    uint8 * buffer = malloc(sizeof(uint8)*getImageSize());    
+    memcpy(buffer, getImage(), getImageSize());
+    return buffer;
+}
+
+void saveImage(char* fileName, uint8*buffer){
+    setImage(buffer);
+    writePngFile(fileName);
+    return;
+}
+
+/* Utility functions essential for computation on the Vanilla Essence C kernel */
 void FFT(short int dir,long m, float *x,float *y)
 {
     long n,i,i1,j,k,i2,l,l1,l2;
@@ -113,45 +132,17 @@ void ThreeDimensionalFFT(short int dir,long width, long height, long depth, floa
     
 }
 
-uint8* readImage(char* fileName){
-    readPngFile(fileName);
-    
-    width = getImageWidth();
-    height = getImageLength();
-    
-    uint8 * buffer = malloc(sizeof(uint8)*getImageSize());    
-    memcpy(buffer, getImage(), getImageSize());
-    return buffer;
-}
-
-void saveImage(char* fileName, uint8*buffer){
-    setImage(buffer);
-    writePngFile(fileName);
-    return;
-}
-
 int main (int argc, const char * argv[])
 {
     //char* fileName="../../../../../dataResources/High-Res-Stage-24-Take-4/out.png";
     //char* outputImageFileName = "../../../../../dataResources/output/result.png";
+    
+    //a copy in executables neighbour used for debugging!
     char* fileName="dataSet/out.png";
     char* outputImageFileName = "dataSetOut/result.png";
     
-//    char* tmpstuff = malloc(sizeof(char*)*4000);
-//    tmpstuff[0]= 'b';
-//    tmpstuff[1]= 'a';
-//    tmpstuff[2]= 'n';
-//    tmpstuff[3]= 'a';
-//    tmpstuff[4]= 'n';
-//    tmpstuff[5]= 'a';
-//    tmpstuff[6]= 's';
-//    //tmpstuff[7]= '\0';
-
-    
     generateListOfAssociatedFiles(fileName);
-    
-    //printFiles();
-    
+        
     int depth = numberOfFiles();
     
     uint8*bigBuffer;
@@ -159,6 +150,7 @@ int main (int argc, const char * argv[])
     printf("Set up ... about to read image stack\n");
     system("pwd");
     printf("\n");
+    
     //load all images into a buffer
     for (int i = 0; i < numberOfFiles(); i++) {
         char* tmp = getNextFileName();

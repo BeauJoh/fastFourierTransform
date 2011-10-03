@@ -19,11 +19,11 @@ t1292986614
 s717240
 
 N/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/Objects-normal/x86_64/DynamicArray.o
-t1317605508
+t1317605925
 s5944
 
 N/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/Objects-normal/x86_64/FileHandler.o
-t1317605508
+t1317605925
 s20028
 
 N/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/Objects-normal/x86_64/RGBAUtilities.o
@@ -36,11 +36,11 @@ t1317439891
 s860
 
 N/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/Objects-normal/x86_64/main.o
-t1317605508
-s12324
+t1317606484
+s12332
 
 N/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Products/Debug/fastFourierTransform
-t1317605508
+t1317606484
 s48524
 
 N/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/fastFourierTransform/DymanicArray.h
@@ -49,18 +49,18 @@ t1317443381
 s993
 
 N/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/fastFourierTransform/DynamicArray.c
-c000000004E8910840000000000000A82
-t1317605508
+c000000004E8912250000000000000A82
+t1317605925
 s2690
 
 N/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/fastFourierTransform/FileHandler.c
-c000000004E8910840000000000002C96
-t1317605508
+c000000004E8912250000000000002C96
+t1317605925
 s11414
 
 N/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/fastFourierTransform/FileHandler.h
-c000000004E89108400000000000009A6
-t1317605508
+c000000004E89122500000000000009A6
+t1317605925
 s2470
 
 N/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/fastFourierTransform/RGBAUtilities.c
@@ -79,9 +79,9 @@ t1316434612
 s548
 
 N/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/fastFourierTransform/main.c
-c000000004E891084000000000000192E
-t1317605508
-s6446
+c000000004E8914680000000000001940
+t1317606504
+s6464
 
 CBuild AST from /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/fastFourierTransform/DynamicArray.c
 r0
@@ -97,7 +97,7 @@ r0
 
 CCheck dependencies
 r0
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies1958cb694839b441^501cd4694839b441^---0#1#0#--18"Check dependencies
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependenciesa2efcae94b39b441^b919d6e94b39b441^---0#1#0#--18"Check dependencies
 
 CCompileC DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/Objects-normal/x86_64/DynamicArray.o /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/fastFourierTransform/DynamicArray.c normal x86_64 c com.apple.compilers.llvm.clang.1_0.compiler
 s339294370.992298
@@ -144,8 +144,8 @@ xcom.apple.compilers.llvm.clang.1_0.compiler
 lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection111"Compile /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/fastFourierTransform/RGBAUtilities.ccfda5d4bc136b441^2c646a4bc136b441^---0#0#0#-19%DVTDocumentLocation2@119"file://localhost/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/fastFourierTransform/RGBAUtilities.c0000000000000000^2948"CompileC DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/Objects-normal/x86_64/RGBAUtilities.o fastFourierTransform/RGBAUtilities.c normal x86_64 c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x c -arch x86_64 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wshorten-64-to-32 -DDEBUG=1 -isysroot /Developer/SDKs/MacOSX10.7.sdk -fasm-blocks -mmacosx-version-min=10.7 -gdwarf-2 -iquote /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/fastFourierTransform-generated-files.hmap -I/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/fastFourierTransform-own-target-headers.hmap -I/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/fastFourierTransform-all-target-headers.hmap -iquote /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/fastFourierTransform-project-headers.hmap -I/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Products/Debug/include -I/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/DerivedSources/x86_64 -I/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/DerivedSources -F/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Products/Debug -MMD -MT dependencies -MF /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/Objects-normal/x86_64/RGBAUtilities.d -c /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/fastFourierTransform/RGBAUtilities.c -o /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/Objects-normal/x86_64/RGBAUtilities.o
 
 CCompileC DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/Objects-normal/x86_64/main.o /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/fastFourierTransform/main.c normal x86_64 c com.apple.compilers.llvm.clang.1_0.compiler
-s339295940.604757
-e339295940.655670
+s339299305.795373
+e339299305.834005
 r1
 xCompileC
 xDerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/Objects-normal/x86_64/main.o
@@ -154,15 +154,15 @@ xnormal
 xx86_64
 xc
 xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection102"Compile /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/fastFourierTransform/main.ca1f39ac43e39b441^3faba8c43e39b441^---0#0#0#-19%DVTDocumentLocation2@110"file://localhost/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/fastFourierTransform/main.c0000000000000000^2903"CompileC DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/Objects-normal/x86_64/main.o fastFourierTransform/main.c normal x86_64 c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x c -arch x86_64 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wshorten-64-to-32 -DDEBUG=1 -isysroot /Developer/SDKs/MacOSX10.7.sdk -fasm-blocks -mmacosx-version-min=10.7 -gdwarf-2 -iquote /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/fastFourierTransform-generated-files.hmap -I/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/fastFourierTransform-own-target-headers.hmap -I/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/fastFourierTransform-all-target-headers.hmap -iquote /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/fastFourierTransform-project-headers.hmap -I/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Products/Debug/include -I/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/DerivedSources/x86_64 -I/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/DerivedSources -F/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Products/Debug -MMD -MT dependencies -MF /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/Objects-normal/x86_64/main.d -c /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/fastFourierTransform/main.c -o /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/Objects-normal/x86_64/main.o
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection102"Compile /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/fastFourierTransform/main.cb4b0cbe94b39b441^a725d6e94b39b441^---0#0#0#-19%DVTDocumentLocation2@110"file://localhost/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/fastFourierTransform/main.c0000000000000000^2903"CompileC DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/Objects-normal/x86_64/main.o fastFourierTransform/main.c normal x86_64 c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x c -arch x86_64 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wshorten-64-to-32 -DDEBUG=1 -isysroot /Developer/SDKs/MacOSX10.7.sdk -fasm-blocks -mmacosx-version-min=10.7 -gdwarf-2 -iquote /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/fastFourierTransform-generated-files.hmap -I/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/fastFourierTransform-own-target-headers.hmap -I/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/fastFourierTransform-all-target-headers.hmap -iquote /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/fastFourierTransform-project-headers.hmap -I/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Products/Debug/include -I/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/DerivedSources/x86_64 -I/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/DerivedSources -F/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Products/Debug -MMD -MT dependencies -MF /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/Objects-normal/x86_64/main.d -c /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/fastFourierTransform/main.c -o /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/Objects-normal/x86_64/main.o
 
 CLd /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Products/Debug/fastFourierTransform normal x86_64
-s339296101.699438
-e339296101.733738
+s339299305.840361
+e339299305.865611
 r1
 xLd
 x/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Products/Debug/fastFourierTransform
 xnormal
 xx86_64
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection146"Link /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Products/Debug/fastFourierTransform111cb3653f39b441^a6d6bb653f39b441^---0#0#0#--971"Ld DerivedData/fastFourierTransform/Build/Products/Debug/fastFourierTransform normal x86_64    cd /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform    setenv MACOSX_DEPLOYMENT_TARGET 10.7    /Developer/usr/bin/clang -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.7.sdk -L/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Products/Debug -F/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Products/Debug -filelist /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/Objects-normal/x86_64/fastFourierTransform.LinkFileList -mmacosx-version-min=10.7 -framework libpng -o /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Products/Debug/fastFourierTransform
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection146"Link /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Products/Debug/fastFourierTransform8c2ed7e94b39b441^9e98dde94b39b441^---0#0#0#--971"Ld DerivedData/fastFourierTransform/Build/Products/Debug/fastFourierTransform normal x86_64    cd /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform    setenv MACOSX_DEPLOYMENT_TARGET 10.7    /Developer/usr/bin/clang -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.7.sdk -L/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Products/Debug -F/Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Products/Debug -filelist /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Intermediates/fastFourierTransform.build/Debug/fastFourierTransform.build/Objects-normal/x86_64/fastFourierTransform.LinkFileList -mmacosx-version-min=10.7 -framework libpng -o /Users/beau/Documents/FourthYear/miscProjects/fastFourierTransform/DerivedData/fastFourierTransform/Build/Products/Debug/fastFourierTransform
 
