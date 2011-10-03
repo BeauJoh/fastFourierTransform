@@ -342,11 +342,13 @@ void generateListOfAssociatedFiles(char* filename){
 }
 
 char* getNextFileName(void){
-    traverser ++;
-    char* result = malloc(sizeof(char)*strlen(getElementAtIndex(orderedFiles, traverser-1)
+    
+    char* result = malloc(sizeof(char)*strlen(getElementAtIndex(orderedFiles, traverser)
 ));
-    result = strcat(path, getElementAtIndex(orderedFiles, traverser-1)); 
-    //printf("elements were : %s\n", getElementAtIndex(orderedFiles, traverser-1));
+    strcpy(result, path);
+    strcat(result, getElementAtIndex(orderedFiles, traverser)); 
+    //printf("getNextFileName name result is: %s\n", getElementAtIndex(orderedFiles, traverser));
+    traverser ++;
     return result;
 }
 

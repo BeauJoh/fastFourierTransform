@@ -61,7 +61,7 @@ void abort_(const char * s, ...)
 
 void readPngFile(char* file_name)
 {
-    printf("%s\n", file_name);
+    //printf("%s\n", file_name);
     char header[8];    // 8 is the maximum size that can be checked
     
     /* open file and test for it being a png */

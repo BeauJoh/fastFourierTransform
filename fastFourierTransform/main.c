@@ -154,7 +154,7 @@ int main (int argc, const char * argv[])
     //load all images into a buffer
     for (int i = 0; i < numberOfFiles(); i++) {
         char* tmp = getNextFileName();
-        printf("next file name is :%s \n", tmp);
+        //printf("next file name from main is :%s \n", tmp);
         readPngFile(tmp);
         width = getImageWidth();
         height = getImageLength();
@@ -197,7 +197,7 @@ int main (int argc, const char * argv[])
         
         char* path = substring(0, (int)strrchr(outputImageFileName, '/')+1, outputImageFileName);
         
-        char* cutDownFile = substring(0, (int)strrchr(file,'.'), file);
+        char* cutDownFile = substring(0, (int)strrchr(file, '.'), file);
 
         char* extension = substring((int)strrchr(file, '.'), (int)strlen(file),file);
 
