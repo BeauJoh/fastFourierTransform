@@ -192,14 +192,15 @@ int main (int argc, const char * argv[])
     for (int i = 0; i < depth; i++) {
         uint8 *buffer = malloc(sizeof(uint8)*getImageSize());
         memcpy(buffer, bigBuffer+(i*getImageSize()), getImageSize());
-        
-        char* file = substring((int)strrchr(outputImageFileName, '/')+1, (int)strlen(outputImageFileName), outputImageFileName);
-        
-        char* path = substring(0, (int)strrchr(outputImageFileName, '/')+1, outputImageFileName);
-        
-        char* cutDownFile = substring(0, (int)strrchr(file, '.'), file);
+                
+        char* file = substring(locateLast(outputImageFileName,'/')+1, strlen(outputImageFileName), outputImageFileName);
 
-        char* extension = substring((int)strrchr(file, '.'), (int)strlen(file),file);
+        //printf("filename : %s", file);
+        
+        char* path = substring(0, locateLast(outputImageFileName,'/')+1, outputImageFileName);
+        
+        char* cutDownFile = substring(0, locateLast(file,'.'), file);
+        char* extension = substring(locateLast(file,'.'), (int)strlen(file),file);
 
         char* newName = cutDownFile;
         char numericalRepresentation[200];
