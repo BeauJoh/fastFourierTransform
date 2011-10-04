@@ -170,8 +170,25 @@ int main (int argc, const char * argv[])
         free(buffer);
     } 
     
-    //Create Nx * Ny * Nz array of data. i.e. embryo slices (Nx * Ny) pixels * (Nz) slices deep. Denoted by Da
+    
+    /* ----------------------------------------> KERNEL BEGINS HERE! <---------------------------------------- */
+    
+    
+    //Create Nx * Ny * Nz array of data. i.e. embryo slices (Nx * Ny) pixels * (Nz) slices deep. Denoted by Da.
     float * Da = normaliseStack(bigBuffer, numberOfFiles());
+    
+    //Create Nx * Ny * Nz array of zero's, this array will be the kernel array denoted Dk.
+    float * Dk = malloc(sizeof(float)*getImageSize()*numberOfFiles());
+    
+    for (int i = 0; i < getImageSize()*numberOfFiles(); i++) {
+        Dk[i] = 0;
+    }
+    
+    //Apply the 3D FFT to Da.
+        //i) Apply the 1-D FFT to each row of Da, denote this result Da1
+    for (int i = 0; i < getImageHeight()*numberOfFiles(); i++) {
+        //do stuff
+    }
     
     
 //    float filtX[3] = {-1, 0, 1};
@@ -193,6 +210,10 @@ int main (int argc, const char * argv[])
 //    }
 
     bigBuffer = denormaliseStack(Da, numberOfFiles());
+    
+    
+    /* ----------------------------------------> KERNEL ENDS HERE! <---------------------------------------- */
+    
     
     //save all images from buffer
     for (int i = 0; i < depth; i++) {
