@@ -199,6 +199,28 @@ float* normalizeImage(uint8* input){
     return output;
 }
 
+float* normaliseStack(uint8* input, int depth){
+    //with 8 bits this obvously causes a rounding error, usually down to 0, solve this by storing as floats
+    float* output = (float *)malloc(sizeof(float)*imageSize*depth);
+    
+    for (int i = 0; i < imageSize*depth; i++) {
+        output[i] = ((float)input[i]/255.0f);
+    }
+    free(input);
+    return output;
+}
+
+uint8* denormaliseStack(float* input, int depth){
+    //with 8 bits this obvously causes a rounding error, usually down to 0, solve this by storing as floats
+    uint8* output = (uint8 *)malloc(sizeof(uint8)*imageSize*depth);
+    
+    for (int i = 0; i < imageSize*depth; i++) {
+        output[i] = ((float)input[i]*255.0f);
+    }
+    free(input);
+    return output;
+}
+
 uint8* denormalizeImage(float*input){
     //with 8 bits this obvously causes a rounding error, usually down to 0, solve this by storing as floats
     uint8* output = (uint8 *)malloc(sizeof(uint8)*imageSize);

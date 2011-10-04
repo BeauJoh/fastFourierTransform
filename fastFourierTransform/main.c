@@ -170,6 +170,10 @@ int main (int argc, const char * argv[])
         free(buffer);
     } 
     
+    //Create Nx * Ny * Nz array of data. i.e. embryo slices (Nx * Ny) pixels * (Nz) slices deep. Denoted by Da
+    float * Da = normaliseStack(bigBuffer, numberOfFiles());
+    
+    
 //    float filtX[3] = {-1, 0, 1};
 //    float filtY[3] = {-1, 0, 1};
 //    float filtZ[3] = {-1, 0, 1};
@@ -188,6 +192,8 @@ int main (int argc, const char * argv[])
 //        }
 //    }
 
+    bigBuffer = denormaliseStack(Da, numberOfFiles());
+    
     //save all images from buffer
     for (int i = 0; i < depth; i++) {
         uint8 *buffer = malloc(sizeof(uint8)*getImageSize());

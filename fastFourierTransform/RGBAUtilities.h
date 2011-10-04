@@ -107,5 +107,10 @@
     void printImage(uint8 * input, uint32 imageSize);
     void cleanup(void);
 
+    float* normaliseStack(uint8* input, int depth);
+    uint8* denormaliseStack(float* input, int depth);
+
+
+
 #endif
 
