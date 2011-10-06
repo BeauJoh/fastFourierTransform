@@ -14,10 +14,24 @@
 
 #define uint8 unsigned char
 
-#define FFT_FORWARD 0
-#define FFT_REVERSE 1
+#define FFT_FORWARD 1
+#define FFT_REVERSE -1
 
-int fft(int dir,long m,float *x,float *y);
+#ifndef TRUE
+#define TRUE 1
+#endif
+#ifndef FALSE
+#define FALSE 0
+#endif
+
+#ifndef BOOL 
+#define BOOL unsigned int
+#endif
+
+//int fft(int dir,long m,float *x,float *y);
+//void FFT(int dir,int m,float *x,float *y);
+BOOL FFT(short int dir,long m,float *x,float *y);
+
 void ThreeDimensionalFFT(short int dir,long width, long height, long depth, float* real, float* imaginary);
 uint8* readImage(char* fileName);
 void saveImage(char* fileName, uint8*buffer);
