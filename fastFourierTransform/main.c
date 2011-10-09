@@ -38,7 +38,7 @@ void saveImage(char* fileName, uint8*buffer){
  dir =  1 gives forward transform
  dir = -1 gives reverse transform
  */
-/*int fft(int dir,long m,float *x,float *y){
+int FFT(int dir,long m,float *x,float *y){
 	long n,i,i1,j,k,i2,l,l1,l2;
 	double c1,c2,tx,ty,t1,t2,u1,u2,z;
     
@@ -106,188 +106,6 @@ void saveImage(char* fileName, uint8*buffer){
     
 	return 1;
 }
-*/
-/*
-void FFT(int dir,int m,float *x,float *y)
-
-{
-    
-    int n,i,i1,j,k,i2,l,l1,l2;
-    
-    float c1,c2,tx,ty,t1,t2,u1,u2,z;
-    
-    //No of Pts
-    
-    
-    
-    n = 1;
-    
-    for (i=0;i<m;i++) 
-        
-        n *= 2;
-    /*
-     
-     0000 -----> 0000 0
-     
-     0001 -----> 1000 8
-     
-     0010 -----> 0100 4
-     
-     0011 -----> 1100 12
-     
-     0100 -----> 0010 2
-     
-     0101 -----> 1010 
-     
-     0110 -----> 0110
-     
-     0111 -----> 1110
-     
-     1000 -----> 0001
-     
-     1001 -----> 1001
-     
-     1010 -----> 0101
-     
-     1011 -----> 1101
-     
-     1100 -----> 0011
-     
-     1101 -----> 1011
-     
-     1110 -----> 0111
-     
-     1111 -----> 1111
-     
-     *//*
-    i2 = n >> 1; // 2^n
-    
-    j = 0;
-    
-    for (i=0;i<n-1;i++)
-        
-    {
-        
-        if (i < j)
-            
-        {
-            
-            tx = x[i];
-            
-            ty = y[i];
-            
-            x[i] = x[j];
-            
-            y[i] = y[j];
-            
-            x[j] = tx;
-            
-            y[j] = ty;
-            
-        }
-        
-        
-        k = i2;
-        
-        while (k <= j)
-            
-        {
-            
-            j -= k;
-            
-            k >>= 1;
-            
-        }
-        
-        j += k;
-    }
-    
-    
-    c1 = -1; 
-    
-    c2 = 0;
-    
-    l2 = 1;
-    
-    
-    for (l=0;l<m;l++) 
-        
-    {
-        
-        l1 = l2;
-        
-        l2 <<= 1;
-        
-        u1 = 1; 
-        
-        u2 = 0;
-        
-        
-        for (j=0;j<l1;j++) 
-            
-        {
-            
-            for (i=j;i<n;i+=l2) 
-                
-            {
-                
-                i1 = i + l1;
-                
-                t1 = (u1 * x[i1] - u2 * y[i1]);
-                
-                t2 = (u1 * y[i1] + u2 * x[i1]);
-                
-                x[i1] = x[i] - t1; 
-                
-                y[i1] = y[i] - t2;
-                
-                x[i] += t1;
-                
-                y[i] += t2;
-                
-            }
-            
-            z = ( u1 * c1 - u2 * c2);
-            
-            u2 =(u1 * c2 + u2 * c1);
-            
-            u1 = z;
-            
-        }
-        
-        c2 = sqrt((1.0 - c1) / 2.0);
-        
-        if (dir == 1) 
-            
-            c2 = -c2;
-        
-        c1 = sqrt((1.0 + c1) / 2.0);
-        
-    }
-    
-    
-    
-    
-    
-    if (dir == -1) 
-        
-    {
-        
-        for (i=0;i<n;i++) 
-            
-        {
-            
-            x[i] = x[i]/n;
-            
-            
-            y[i] = y[i]/n;
-            
-            
-        }
-    }
-}
-*/
-
 
 /*
  Direct fourier transform
@@ -334,256 +152,11 @@ int DFT(int dir,int m,float *x1,float *y1)
     return(TRUE);
 }
 
-/*
- This computes an in-place complex-to-complex FFT 
- x and y are the real and imaginary arrays of 2^m points.
- dir =  1 gives forward transform
- dir = -1 gives reverse transform 
- */
-BOOL FFT(short int dir,long m,float *x,float *y)
-{
-    long n,i,i1,j,k,i2,l,l1,l2;
-    float c1,c2,tx,ty,t1,t2,u1,u2,z;
-    
-    /* Calculate the number of points */
-    n = 1;
-    for (i=0;i<m;i++) 
-        n *= 2;
-    
-    /* Do the bit reversal */
-    i2 = n >> 1;
-    j = 0;
-    for (i=0;i<n-1;i++) {
-        if (i < j) {
-            tx = x[i];
-            ty = y[i];
-            x[i] = x[j];
-            y[i] = y[j];
-            x[j] = tx;
-            y[j] = ty;
-        }
-        k = i2;
-        while (k <= j) {
-            j -= k;
-            k >>= 1;
-        }
-        j += k;
-    }
-    
-    /* Compute the FFT */
-    c1 = -1.0; 
-    c2 = 0.0;
-    l2 = 1;
-    for (l=0;l<m;l++) {
-        l1 = l2;
-        l2 <<= 1;
-        u1 = 1.0; 
-        u2 = 0.0;
-        for (j=0;j<l1;j++) {
-            for (i=j;i<n;i+=l2) {
-                i1 = i + l1;
-                t1 = u1 * x[i1] - u2 * y[i1];
-                t2 = u1 * y[i1] + u2 * x[i1];
-                x[i1] = x[i] - t1; 
-                y[i1] = y[i] - t2;
-                x[i] += t1;
-                y[i] += t2;
-            }
-            z =  u1 * c1 - u2 * c2;
-            u2 = u1 * c2 + u2 * c1;
-            u1 = z;
-        }
-        c2 = sqrt((1.0 - c1) / 2.0);
-        if (dir == 1) 
-            c2 = -c2;
-        c1 = sqrt((1.0 + c1) / 2.0);
-    }
-    
-    /* Scaling for forward transform */
-    if (dir == 1) {
-        for (i=0;i<n;i++) {
-            x[i] /= n;
-            y[i] /= n;
-        }
-    }
-    
-    return(TRUE);
-}
-
-
-/**********************************************************/
-/* fft.c                                                  */
-/* (c) Douglas L. Jones                                   */
-/* University of Illinois at Urbana-Champaign             */
-/* January 19, 1992                                       */
-/*                                                        */
-/*   fft: in-place radix-2 DIT DFT of a complex input     */
-/*                                                        */
-/*   input:                                               */
-/* n: length of FFT: must be a power of two               */
-/* m: n = 2**m                                            */
-/*   input/output                                         */
-/* x: double array of length n with real part of data     */
-/* y: double array of length n with imag part of data     */
-/*                                                        */
-/*   Permission to copy and use this program is granted   */
-/*   under a Creative Commons "Attribution" license       */
-/*   http://creativecommons.org/licenses/by/1.0/          */
-/**********************************************************/
-
-fft(int n,int m,float* x, float* y){
-    int i,j,k,n1,n2;
-    float c,s,e,a,t1,t2;        
-    
-    
-    j = 0; /* bit-reverse */
-    n2 = n/2;
-    for (i=1; i < n - 1; i++)
-    {
-        n1 = n2;
-        while ( j >= n1 )
-        {
-            j = j - n1;
-            n1 = n1/2;
-        }
-        j = j + n1;
-        
-        if (i < j)
-        {
-            t1 = x[i];
-            x[i] = x[j];
-            x[j] = t1;
-            t1 = y[i];
-            y[i] = y[j];
-            y[j] = t1;
-        }
-    }
-    
-    
-    n1 = 0; /* FFT */
-    n2 = 1;
-    
-    for (i=0; i < m; i++)
-    {
-        n1 = n2;
-        n2 = n2 + n2;
-        e = -6.283185307179586/n2;
-        a = 0.0;
-        
-        for (j=0; j < n1; j++)
-        {
-            c = cos(a);
-            s = sin(a);
-            a = a + e;
-            
-            for (k=j; k < n; k=k+n2)
-            {
-                t1 = c*x[k+n1] - s*y[k+n1];
-                t2 = s*x[k+n1] + c*y[k+n1];
-                x[k+n1] = x[k] - t1;
-                y[k+n1] = y[k] - t2;
-                x[k] = x[k] + t1;
-                y[k] = y[k] + t2;
-            }
-        }
-    }
-    
-    return;
-}                          
-
-
-//
-//   A COOLEY-TUKEY RADIX-2, DIT  FFT PROGRAM
-//   COMPLEX INPUT DATA IN ARRAYS X AND Y
-//   C. S. BURRUS, RICE UNIVERSITY, SEPT 1985
-//
-//---------------------------------------------------------
-void fortranFFT (float* X,float* Y,int N,int M){
-//------------DIGIT REVERSE COUNTER-----------------
-//
-    
-    int J = 1;
-    int N1 = N - 1;
-
-/*
-    DO 104 I=1, N1
-IF (I.GE.J) GOTO 101
-XT = X(J)
-X(J) = X(I)
-X(I) = XT
-XT   = Y(J)
-Y(J) = Y(I)
-Y(I) = XT
-101       K = N/2
-102       IF (K.GE.J) GOTO 103
-J = J - K
-K = K/2
-GOTO 102
-103       J = J + K
-104   CONTINUE
-//--------------MAIN FFT LOOPS-----------------------------
-//
-N2 = 1
-DO 10 K = 1, M
-E  = 6.283185307179586/(2*N2)
-A  = 0
-DO 20 J = 1, N2
-C = COS (A)
-S = SIN (A)
-A = J*E
-DO 30 I = J, N, 2*N2
-L = I + N2
-XT = C*X(L) + S*Y(L)
-YT = C*Y(L) - S*X(L)
-X(L) = X(I) - XT
-X(I) = X(I) + XT
-Y(L) = Y(I) - YT
-Y(I) = Y(I) + YT
-30           CONTINUE
-20       CONTINUE
-N2 = N2+N2
-10   CONTINUE
-C
-RETURN
- */
-}
-
-
-
-void ThreeDimensionalFFT(short int dir,long width, long height, long depth, float* real, float* imaginary){
-    //create space for result array
-    float resultReal[width*height*depth];
-    float resultImag[width*height*depth];
-    
-    for(int z = 0; z < depth; z++){
-        for(int y = 0; y < height; y++){
-            float rowWiseReal[width];
-            float rowWiseImag[width];
-            
-            //extract a tmp row
-            for(int x = 0; x < width; x++){
-                rowWiseReal[x] = real[z*(width*height)+y*(width)+x];
-                rowWiseImag[x] = imaginary[z*(width*height)+y*(width)+x];
-            }
-            
-            //apply the Fast Fourier Transform
-            FFT(dir,(int)width,rowWiseReal,rowWiseImag);
-            
-            //store the tmp result into result array
-            for(int x = 0; x < width; x++){
-                resultReal[z*(width*height)+y*(width)+x] = rowWiseReal[x];
-                resultImag[z*(width*height)+y*(width)+x] = rowWiseImag[x];
-            }
-            
-            //done with this row
-        }
-    }
-    
-    
-}
-
 int main (int argc, const char * argv[])
 {
+//#define DoingRealWork   
+#ifdef DoingRealWork
+    
     //char* fileName="../../../../../dataResources/High-Res-Stage-24-Take-4/out.png";
     //char* outputImageFileName = "../../../../../dataResources/output/result.png";
     
@@ -651,6 +224,7 @@ int main (int argc, const char * argv[])
         
         //transform in the forward direction row-wise
         //fft(1, getImageWidth(), Da1R+offset, Da1I+offset);
+        //NewFFT(8, Da1R+offset, Da1I+offset);
         DFT(1, getImageWidth(), Da1R+offset, Da1I+offset);
         //printf("looped once!\n");
 
@@ -673,6 +247,7 @@ int main (int argc, const char * argv[])
             tmpI[j] = Da1I[i+(j*getImageWidth())];
         }
         
+        //NewFFT(8, tmpR, tmpI);
         DFT(1, getImageHeight(), tmpR, tmpI);
         
         //set into new array
@@ -696,7 +271,8 @@ int main (int argc, const char * argv[])
             tmpR[j] = Da2R[i+(j*getImageWidth()*getImageHeight())];
             tmpI[j] = Da2I[i+(j*getImageWidth()*getImageHeight())];
         }
-        
+        //NewFFT(8, tmpR, tmpI);
+
         DFT(1, numberOfFiles(), tmpR, tmpI);
         
         //set into new array
@@ -765,6 +341,8 @@ int main (int argc, const char * argv[])
         //transform in the forward direction row-wise
         //fft(1, getImageWidth(), Da1R+offset, Da1I+offset);
         DFT(1, getImageWidth(), Dk1R+offset, Dk1I+offset);
+        //NewFFT(8, Dk1R+offset, Dk1I+offset);
+
         //printf("looped once!\n");
         
         //printf("Computed FFT at row number %i of image number %i\n", i%getImageWidth(), i%(getImageHeight()*numberOfFiles()));
@@ -787,7 +365,8 @@ int main (int argc, const char * argv[])
         }
         
         DFT(1, getImageHeight(), tmpR, tmpI);
-        
+        //NewFFT(8, tmpR, tmpI);
+
         //set into new array
         for (int j = 0; j < getImageHeight(); j++) {
             Dk2R[i+(j*getImageWidth())] = tmpR[j];
@@ -809,7 +388,8 @@ int main (int argc, const char * argv[])
             tmpR[j] = Dk2R[i+(j*getImageWidth()*getImageHeight())];
             tmpI[j] = Dk2I[i+(j*getImageWidth()*getImageHeight())];
         }
-        
+        //NewFFT(8, tmpR, tmpI);
+
         DFT(1, numberOfFiles(), tmpR, tmpI);
         
         //set into new array
@@ -856,7 +436,8 @@ int main (int argc, const char * argv[])
             tmpR[j] = Da3R[i+(j*getImageWidth()*getImageHeight())];
             tmpI[j] = Da3I[i+(j*getImageWidth()*getImageHeight())];
         }
-        
+        //NewFFT(8, tmpR, tmpI);
+
         DFT(-1, numberOfFiles(), tmpR, tmpI);
         
         //set into new array
@@ -878,6 +459,8 @@ int main (int argc, const char * argv[])
             tmpI[j] = Da2I[i+(j*getImageWidth())];
         }
         
+        //NewFFT(8, tmpR, tmpI);
+
         DFT(-1, getImageHeight(), tmpR, tmpI);
         
         //set into new array
@@ -896,7 +479,8 @@ int main (int argc, const char * argv[])
         //transform in the forward direction row-wise
         //fft(1, getImageWidth(), Da1R+offset, Da1I+offset);
         DFT(-1, getImageWidth(), Da1R+offset, Da1I+offset);
-        
+        //NewFFT(8, Da1R+offset, Da1I+offset);
+
         //memory copy row of data into Da1
         memcpy(DaR+offset, Da1R+offset, getImageWidth());
         memcpy(DaI+offset, Da1I+offset, getImageWidth());
@@ -912,38 +496,8 @@ int main (int argc, const char * argv[])
     //collect result ready for writing
     bigBuffer = denormaliseStack(DaR, numberOfFiles());
     
-    
-    /* ----------------------------------------> KERNEL ENDS HERE! <---------------------------------------- */
-    
-    int textpow = 6;
-    float* dataReal = malloc(sizeof(float)*pow(2, textpow));
-    float* dataImag = malloc(sizeof(float)*pow(2, textpow));
-    
-    for (int i = 0; i < pow(2, textpow); i++) {
-        dataReal[i] = i;
-        dataImag[i] = i;
-    }
-    
-    for (int i = 0; i < pow(2, textpow); i++) {
-        printf("before fft: real data at index %i contains value \t\t:%f\n", i, dataReal[i]);
-        printf("before fft: imaginary data at index %i contains value \t:%f\n", i, dataImag[i]);
-    }
-    
-    DFT(1, pow(2, textpow), dataReal, dataImag);
-    //fft(FFT_FORWARD, pow(2, textpow), dataReal, dataImag);
 
-    for (int i = 0; i < pow(2, textpow); i++) {
-        printf("after fft: real data at index %i contains value \t\t:%f\n", i, dataReal[i]);
-        printf("after fft: imaginary data at index %i contains value \t:%f\n", i, dataImag[i]);
-    }
-    
-    DFT(-1, pow(2, textpow), dataReal, dataImag);
-    //fft(FFT_REVERSE, pow(2, textpow), dataReal, dataImag);
-    
-    for (int i = 0; i < pow(2, textpow); i++) {
-        printf("after invfft: real data at index %i contains value \t\t:%f\n", i, dataReal[i]);
-        printf("after invfft: imaginary data at index %i contains value \t:%f\n", i, dataImag[i]);
-    }
+    /* ----------------------------------------> KERNEL ENDS HERE! <---------------------------------------- */
     
     //save all images from buffer
     for (int i = 0; i < depth; i++) {
@@ -969,6 +523,72 @@ int main (int argc, const char * argv[])
         saveImage(newName, buffer);   
     }
     
+#else
+    
+    int textpow = 6;
+    
+    float* slowDataReal = malloc(sizeof(float)*pow(2, textpow));
+    float* slowDataImag = malloc(sizeof(float)*pow(2, textpow));
+    
+    for (int i = 0; i < pow(2, textpow); i++) {
+        slowDataReal[i] = i;
+        slowDataImag[i] = i;
+    }
+    
+    
+    float* dataReal = malloc(sizeof(float)*pow(2, textpow));
+    float* dataImag = malloc(sizeof(float)*pow(2, textpow));
+    
+    for (int i = 0; i < pow(2, textpow); i++) {
+        dataReal[i] = i;
+        dataImag[i] = i;
+    }
+    
+    
+    /*
+    for (int i = 0; i < pow(2, textpow); i++) {
+        printf("before fft: real data at index %i contains value \t\t:%f\n", i, dataReal[i]);
+        printf("before fft: imaginary data at index %i contains value \t:%f\n", i, dataImag[i]);
+    }
+    */
+    
+    //realbifftstage(float *datareal, t_complex *twiddle, unsigned int framesize, bool invert)
+
+    //NewFFT(pow(2, textpow), dataReal, dataImag);
+    DFT(1, pow(2, textpow), slowDataReal, slowDataImag);
+    //fft(FFT_FORWARD, pow(2, textpow), dataReal, dataImag);
+    
+    FFT(FFT_FORWARD,  textpow, dataReal, dataImag);
+
+    
+    for (int i = 0; i < pow(2, textpow); i++) {
+        printf("after dft: real data at index %i contains value \t\t:%f\n", i, slowDataReal[i]);
+        printf("after dft: imaginary data at index %i contains value \t:%f\n", i, slowDataImag[i]);
+        printf("\n");
+        printf("after fft: real data at index %i contains value \t\t:%f\n", i, dataReal[i]);
+        printf("after fft: imaginary data at index %i contains value \t:%f\n", i, dataImag[i]);
+        printf("\n");
+        printf("\n");
+    }
+    
+     
+    //NewFFT(pow(2, textpow), dataReal, dataImag);
+    DFT(-1, pow(2, textpow), slowDataReal, slowDataImag);
+    FFT(FFT_REVERSE, textpow, dataReal, dataImag);
+    
+    
+    for (int i = 0; i < pow(2, textpow); i++) {
+        printf("after inv dft: real data at index %i contains value \t\t:%f\n", i, slowDataReal[i]);
+        printf("after inv dft: imaginary data at index %i contains value \t:%f\n", i, slowDataImag[i]);
+        printf("\n");
+        printf("after inv fft: real data at index %i contains value \t\t:%f\n", i, dataReal[i]);
+        printf("after inv fft: imaginary data at index %i contains value \t:%f\n", i, dataImag[i]);
+        printf("\n");
+        printf("\n");
+    }
+    
+    
+#endif
     return 0;
 }
 
