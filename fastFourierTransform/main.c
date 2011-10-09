@@ -152,9 +152,19 @@ int DFT(int dir,int m,float *x1,float *y1)
     return(TRUE);
 }
 
+//long ClosestPower2(long x){
+//	long double temp=log(x)/log(2);
+//	return (long)pow(2,((int)(temp+0.5)));
+//}
+
+int ClosestPower2(int x){
+	//long double temp=log(x)/log(2);
+	return log(x)/log(2);
+}
+
 int main (int argc, const char * argv[])
 {
-//#define DoingRealWork   
+#define DoingRealWork   
 #ifdef DoingRealWork
     
     //char* fileName="../../../../../dataResources/High-Res-Stage-24-Take-4/out.png";
@@ -214,25 +224,26 @@ int main (int argc, const char * argv[])
     // ------------------------> FFT row-wise <------------------------
     float * Da1R = malloc(stackSize);   //Da1R real component,
     float * Da1I = malloc(stackSize);   //Da1I imaginary component
-    
+
     for (int i = 0; i < getImageHeight()*numberOfFiles(); i++) {
         int offset = i * getImageWidth();
-        
+
+
         //memory copy row of data into Da1
         memcpy(Da1R+offset, DaR+offset, getImageWidth());
         memcpy(Da1I+offset, DaI+offset, getImageWidth());
         
+
+        
         //transform in the forward direction row-wise
-        //fft(1, getImageWidth(), Da1R+offset, Da1I+offset);
-        //NewFFT(8, Da1R+offset, Da1I+offset);
-        DFT(1, getImageWidth(), Da1R+offset, Da1I+offset);
+        FFT(1, ClosestPower2(getImageWidth()), Da1R+offset, Da1I+offset);
+        //DFT(1, getImageWidth(), Da1R+offset, Da1I+offset);
+        
         //printf("looped once!\n");
 
         //printf("Computed FFT at row number %i of image number %i\n", i%getImageWidth(), i%(getImageHeight()*numberOfFiles()));
     }
     printf("FFT row-wise done!\n");
-    
-    
     
     // ------------------------> FFT column-wise <------------------------ 
     float * Da2R = malloc(stackSize);   //Da2R real component,
@@ -247,8 +258,8 @@ int main (int argc, const char * argv[])
             tmpI[j] = Da1I[i+(j*getImageWidth())];
         }
         
-        //NewFFT(8, tmpR, tmpI);
-        DFT(1, getImageHeight(), tmpR, tmpI);
+        FFT(FFT_FORWARD, ClosestPower2(getImageHeight()), tmpR, tmpI);
+        //DFT(1, getImageHeight(), tmpR, tmpI);
         
         //set into new array
         for (int j = 0; j < getImageHeight(); j++) {
@@ -325,6 +336,7 @@ int main (int argc, const char * argv[])
     //        }
     //    }
     
+    
 // FFT the kernel now
     
     // ------------------------> FFT row-wise <------------------------
@@ -339,7 +351,7 @@ int main (int argc, const char * argv[])
         memcpy(Dk1I+offset, DkI+offset, getImageWidth());
         
         //transform in the forward direction row-wise
-        //fft(1, getImageWidth(), Da1R+offset, Da1I+offset);
+        //FFT(FFT_FORWARD, ClosestPower2(getImageWidth()), Da1R+offset, Da1I+offset);
         DFT(1, getImageWidth(), Dk1R+offset, Dk1I+offset);
         //NewFFT(8, Dk1R+offset, Dk1I+offset);
 
@@ -363,9 +375,9 @@ int main (int argc, const char * argv[])
             tmpR[j] = Dk1R[i+(j*getImageWidth())];
             tmpI[j] = Dk1I[i+(j*getImageWidth())];
         }
-        
+
+        //FFT(FFT_FORWARD, ClosestPower2(getImageHeight()), tmpR, tmpI);
         DFT(1, getImageHeight(), tmpR, tmpI);
-        //NewFFT(8, tmpR, tmpI);
 
         //set into new array
         for (int j = 0; j < getImageHeight(); j++) {
@@ -388,8 +400,7 @@ int main (int argc, const char * argv[])
             tmpR[j] = Dk2R[i+(j*getImageWidth()*getImageHeight())];
             tmpI[j] = Dk2I[i+(j*getImageWidth()*getImageHeight())];
         }
-        //NewFFT(8, tmpR, tmpI);
-
+        
         DFT(1, numberOfFiles(), tmpR, tmpI);
         
         //set into new array
@@ -459,9 +470,9 @@ int main (int argc, const char * argv[])
             tmpI[j] = Da2I[i+(j*getImageWidth())];
         }
         
-        //NewFFT(8, tmpR, tmpI);
+        FFT(FFT_REVERSE, ClosestPower2(getImageHeight()), tmpR, tmpI);
 
-        DFT(-1, getImageHeight(), tmpR, tmpI);
+        //DFT(-1, getImageHeight(), tmpR, tmpI);
         
         //set into new array
         for (int j = 0; j < getImageHeight(); j++) {
@@ -477,8 +488,8 @@ int main (int argc, const char * argv[])
         int offset = i * getImageWidth();
         
         //transform in the forward direction row-wise
-        //fft(1, getImageWidth(), Da1R+offset, Da1I+offset);
-        DFT(-1, getImageWidth(), Da1R+offset, Da1I+offset);
+        FFT(-1, 8, Da1R+offset, Da1I+offset);
+        //DFT(-1, getImageWidth(), Da1R+offset, Da1I+offset);
         //NewFFT(8, Da1R+offset, Da1I+offset);
 
         //memory copy row of data into Da1
