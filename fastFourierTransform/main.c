@@ -525,8 +525,13 @@ int main (int argc, const char * argv[])
     
 #else
     
+//#define DebugPrintArrayValues // <- uncomment this if you want to print arrays to verify transform results
+        //timer variables
+    clock_t startTime, stopTime;
+
     int textpow = 6;
     
+        //initialize and set test arrays
     float* slowDataReal = malloc(sizeof(float)*pow(2, textpow));
     float* slowDataImag = malloc(sizeof(float)*pow(2, textpow));
     
@@ -534,7 +539,6 @@ int main (int argc, const char * argv[])
         slowDataReal[i] = i;
         slowDataImag[i] = i;
     }
-    
     
     float* dataReal = malloc(sizeof(float)*pow(2, textpow));
     float* dataImag = malloc(sizeof(float)*pow(2, textpow));
@@ -545,22 +549,33 @@ int main (int argc, const char * argv[])
     }
     
     
-    /*
+#ifdef DebugPrintArrayValues
+        //verify that all four arrays populated correctly
     for (int i = 0; i < pow(2, textpow); i++) {
-        printf("before fft: real data at index %i contains value \t\t:%f\n", i, dataReal[i]);
-        printf("before fft: imaginary data at index %i contains value \t:%f\n", i, dataImag[i]);
+        printf("before dft: real data at index %i contains value \t\t:%f\n", i, slowDataReal[i]);
+        printf("before dft: imaginary data at index %i contains value \t:%f\n", i, slowDataImag[i]);
+        printf("\n");
+        printf("before fft: real data at index %i contains value \t\t:%f\n", i, slowDataReal[i]);
+        printf("before fft: imaginary data at index %i contains value \t:%f\n", i, slowDataImag[i]);
+        printf("\n");
+        printf("\n");
     }
-    */
+#endif
     
-    //realbifftstage(float *datareal, t_complex *twiddle, unsigned int framesize, bool invert)
-
-    //NewFFT(pow(2, textpow), dataReal, dataImag);
+    //time forward DFT execution
+    startTime = clock();
     DFT(1, pow(2, textpow), slowDataReal, slowDataImag);
-    //fft(FFT_FORWARD, pow(2, textpow), dataReal, dataImag);
+    stopTime = clock();
+    printf("Time to perform DFT was %f seconds\n", (double)(stopTime-startTime)/CLOCKS_PER_SEC);
     
+    //time forward FFT execution
+    startTime = clock();
     FFT(FFT_FORWARD,  textpow, dataReal, dataImag);
+    stopTime = clock();
+    printf("Time to perform FFT was %f seconds\n", (double)(stopTime-startTime)/CLOCKS_PER_SEC);
 
-    
+#ifdef DebugPrintArrayValues
+    //verify that all four arrays have been transformed
     for (int i = 0; i < pow(2, textpow); i++) {
         printf("after dft: real data at index %i contains value \t\t:%f\n", i, slowDataReal[i]);
         printf("after dft: imaginary data at index %i contains value \t:%f\n", i, slowDataImag[i]);
@@ -570,13 +585,22 @@ int main (int argc, const char * argv[])
         printf("\n");
         printf("\n");
     }
+#endif
     
-     
-    //NewFFT(pow(2, textpow), dataReal, dataImag);
+    //time reverse DFT execution
+    startTime = clock();
     DFT(-1, pow(2, textpow), slowDataReal, slowDataImag);
+    stopTime = clock();
+    printf("Time to perform Inverse DFT was %f seconds\n", (double)(stopTime-startTime)/CLOCKS_PER_SEC);
+    
+    //time reverse FFT execution
+    startTime = clock();
     FFT(FFT_REVERSE, textpow, dataReal, dataImag);
+    stopTime = clock();
+    printf("Time to perform Inverse FFT was %f seconds\n", (double)(stopTime-startTime)/CLOCKS_PER_SEC);
     
-    
+#ifdef DebugPrintArrayValues
+    //verify that all four arrays have inverse transform corresponding closely to their original values.
     for (int i = 0; i < pow(2, textpow); i++) {
         printf("after inv dft: real data at index %i contains value \t\t:%f\n", i, slowDataReal[i]);
         printf("after inv dft: imaginary data at index %i contains value \t:%f\n", i, slowDataImag[i]);
@@ -586,6 +610,7 @@ int main (int argc, const char * argv[])
         printf("\n");
         printf("\n");
     }
+#endif
     
     
 #endif

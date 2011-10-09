@@ -11,6 +11,8 @@
 
 #include <stdio.h>
 #include <math.h>
+#include <time.h>
+
 
 #define uint8 unsigned char
 
