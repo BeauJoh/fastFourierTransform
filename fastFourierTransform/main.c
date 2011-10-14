@@ -309,7 +309,7 @@ int main (int argc, const char * argv[])
 
     //generate Laplacian
     for (int i = 0; i < numberOfFiles()*getImageWidth()*getImageHeight(); i++) {
-        if (i == (numberOfFiles()*getImageWidth()*getImageHeight()/2)) {
+        if (i == ((numberOfFiles()*getImageWidth()*getImageHeight())/2)) {
             DkR[i] = 0;
         }
         else{
@@ -353,7 +353,6 @@ int main (int argc, const char * argv[])
         //transform in the forward direction row-wise
         //FFT(FFT_FORWARD, ClosestPower2(getImageWidth()), Da1R+offset, Da1I+offset);
         DFT(1, getImageWidth(), Dk1R+offset, Dk1I+offset);
-        //NewFFT(8, Dk1R+offset, Dk1I+offset);
 
         //printf("looped once!\n");
         
